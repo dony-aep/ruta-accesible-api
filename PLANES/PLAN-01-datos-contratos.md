@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Rol | BD / DTOs (primer integrante del rol) |
-| Responsable | (por asignar) |
+| Responsable | Zamith — @Zamith101 |
 | Rama | `plan-01-datos` |
 | Depende de | PLAN-00 mergeado en `main` |
 | Desbloquea | PLAN-04 |
