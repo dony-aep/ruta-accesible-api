@@ -17,6 +17,8 @@
 /Api/Migrations/                            @dony-aep
 /appsettings.json                           @dony-aep
 /.gitignore                                 @dony-aep
+/CLAUDE.md                                  @dony-aep
+/AGENTS.md                                  @dony-aep
 
 # PLAN-01 - BD / DTOs (1): lugares, DTOs y seed
 /Api/Dtos/                                  @Zamith101
