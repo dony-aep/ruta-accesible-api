@@ -71,10 +71,10 @@ no queden dos personas en el mismo plan ni planes sin dueño, y actualiza esta t
 
 | Plan | Rol | Qué construye | Rama | Responsable | Estado |
 |---|---|---|---|---|---|
-| [PLAN-00](PLAN-00-fundacion.md) — Fundación | Backend / TL | Repositorio, solución, modelos, `AppDbContext`, migración inicial, Swagger | `plan-00-fundacion` | @dony-aep | No iniciado |
-| [PLAN-01](PLAN-01-datos-contratos.md) — Datos y contratos | BD / DTOs (1) | DTOs, validaciones, seed de Barranquilla, CRUD de `Lugar`, endpoint de búsqueda | `plan-01-datos` | por asignar | Bloqueado por PLAN-00 |
-| [PLAN-02](PLAN-02-analisis-ia.md) — Análisis con IA | API / IA | Servicio de Gemini, CRUD de `ReporteAccesibilidad`, endpoint `analizar`, manejo del fallo | `plan-02-ia` | por asignar | Bloqueado por PLAN-00 |
-| [PLAN-03](PLAN-03-catalogo-consultas.md) — Catálogo y consultas | BD / DTOs (2) | CRUD de `TipoBarrera`, borrado protegido, estadísticas por zona | `plan-03-catalogo` | por asignar | Bloqueado por PLAN-00 |
+| [PLAN-00](PLAN-00-fundacion.md) — Fundación | Backend / TL | Repositorio, solución, modelos, `AppDbContext`, migración inicial, Swagger | `plan-00-fundacion` | @dony-aep | **En revision — PR abierto** |
+| [PLAN-01](PLAN-01-datos-contratos.md) — Datos y contratos | BD / DTOs (1) | DTOs, validaciones, seed de Barranquilla, CRUD de `Lugar`, endpoint de búsqueda | `plan-01-datos` | por asignar | **Listo para empezar** |
+| [PLAN-02](PLAN-02-analisis-ia.md) — Análisis con IA | API / IA | Servicio de Gemini, CRUD de `ReporteAccesibilidad`, endpoint `analizar`, manejo del fallo | `plan-02-ia` | por asignar | **Listo para empezar** |
+| [PLAN-03](PLAN-03-catalogo-consultas.md) — Catálogo y consultas | BD / DTOs (2) | CRUD de `TipoBarrera`, borrado protegido, estadísticas por zona | `plan-03-catalogo` | por asignar | **Listo para empezar** |
 | [PLAN-04](PLAN-04-documentacion-qa.md) — Documentación y QA | Docs / QA | README, tabla de endpoints, capturas, batería de pruebas, anotaciones de Swagger | `plan-04-docs` | por asignar | Bloqueado por 01, 02 y 03 |
 | [PLAN-05](PLAN-05-cierre-presentacion.md) — Cierre | Todos | Slides, guion, video demo, ensayos, checklist final | `plan-05-cierre` | Los 5 | Bloqueado por PLAN-04 |
 

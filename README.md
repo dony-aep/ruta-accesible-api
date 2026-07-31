@@ -29,6 +29,15 @@ norma.
 
 En desarrollo. Ver `PLANES/README.md` para el avance de cada frente de trabajo.
 
+| Frente | Estado |
+|---|---|
+| PLAN-00 — Fundación: modelos, `AppDbContext`, migración, Swagger | En revisión |
+| PLAN-01 — Datos y contratos: DTOs, seed, CRUD de `Lugar`, búsqueda | Listo para empezar |
+| PLAN-02 — Análisis con IA: servicio de Gemini y endpoint `analizar` | Listo para empezar |
+| PLAN-03 — Catálogo y consultas: `TipoBarrera` y estadísticas | Listo para empezar |
+| PLAN-04 — Documentación y QA | Bloqueado por 01, 02 y 03 |
+| PLAN-05 — Cierre y presentación | Bloqueado por PLAN-04 |
+
 ## Stack
 
 | | |
@@ -58,17 +67,27 @@ PLANES/            reparto del trabajo por integrante
 
 ## Cómo ejecutarlo
 
-Requisitos: SDK de .NET (el proyecto apunta a `net8.0`) y la herramienta `dotnet-ef`.
+**Requisitos.** Un SDK de .NET 8 o superior y el **runtime de .NET 8**. No hace falta instalar
+el SDK 8 específicamente: el proyecto apunta a `net8.0` y un SDK más nuevo compila para esa
+versión sin problema, siempre que el runtime 8 esté presente. Se comprueba con:
+
+```bash
+dotnet --list-runtimes    # deben aparecer Microsoft.NETCore.App 8.x y Microsoft.AspNetCore.App 8.x
+```
 
 ```bash
 git clone https://github.com/dony-aep/ruta-accesible-api.git
 cd ruta-accesible-api
+dotnet tool restore                     # instala dotnet-ef 8.0.29 desde dotnet-tools.json
 dotnet restore
-dotnet ef database update --project Api
+dotnet ef database update --project Api # crea ruta-accesible.db y aplica las migraciones
 dotnet run --project Api
 ```
 
 Swagger queda en `/swagger`.
+
+`dotnet tool restore` no es opcional: `dotnet ef` se distribuye como herramienta local fijada en
+`dotnet-tools.json` para que los cinco integrantes generen migraciones con la misma versión.
 
 ### Configurar la clave del modelo de lenguaje
 

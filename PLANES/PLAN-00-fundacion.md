@@ -31,11 +31,14 @@ El nombre sigue la convención del profesor en sus ejemplos (`eco-puntos-api`,
 
 - [ ] Idea y entidades aprobadas en la reunión del jueves 30. **Hecho:** taller de definición
       entregado el 30 de julio (`../docs/especificacion.md`).
-- [ ] Repositorio `ruta-accesible-api` creado en GitHub, público, con descripción y topics.
+- [x] Repositorio `ruta-accesible-api` creado en GitHub, público, con descripción y topics.
 - [ ] Los 4 compañeros invitados como colaboradores con permiso de escritura.
-- [ ] `PLANES/`, `.github/CODEOWNERS` y `.github/pull_request_template.md` copiados a la raíz
-      del repositorio, con los roles ya asignados.
+      **Pendiente: faltan sus usuarios de GitHub.**
+- [x] `PLANES/`, `.github/CODEOWNERS` y `.github/pull_request_template.md` en la raíz del
+      repositorio. Los roles siguen sin asignar en `CODEOWNERS` (marcadores `@plan-01`…`@plan-04`).
 - [ ] Protección de `main` activada: sin push directo, PR con al menos una aprobación.
+      **Se activa cuando entren los colaboradores**, no antes: con un solo miembro, exigir
+      aprobación de otra persona bloquearía el propio PLAN-00.
 
 ## Archivos que este plan posee
 
@@ -104,12 +107,23 @@ Al mergear este plan, los otros roles pueden asumir que existe:
   una perfecta el cuarto: todo el equipo está bloqueado hasta que esto entre a `main`.
 - Español en clases, propiedades y commits. Sin claves en el repositorio.
 
+## Decisiones tomadas durante la ejecución
+
+| Punto | Decisión | Por qué |
+|---|---|---|
+| Formato de la solución | `.sln` clásico, no `.slnx` | El SDK 10 genera `.slnx` por defecto. Se forzó `--format sln` para que abra sin fricción en Visual Studio 2022 y en SDK anteriores, y porque es lo que asume el material del profesor |
+| Versión de `dotnet-ef` | Manifiesto local, fijada en 8.0.29 | Con `dotnet tool restore` los cinco usan la misma versión. Evita que uno genere migraciones con otra versión de EF |
+| Versiones de paquetes | Fijadas a `8.0.29`, sin rangos flotantes | `Version="8.*"` haría que cada compañero resuelva algo distinto y el build dejaría de ser reproducible |
+| Coordenadas | `double`, no `decimal` | Es lo que usa el profesor en `clase-17.md` y evita la advertencia de EF Core sobre precisión de `decimal` en SQLite |
+| Enums en la base de datos | Guardados como texto vía `HasConversion<string>()` | En la demo se lee `Alta` y no `2`, y reordenar el enum no corrompe los datos existentes |
+
 ## Definición de terminado
 
-- [ ] `dotnet build` termina con 0 errores.
-- [ ] `dotnet ef database update` aplica la migración sobre una base de datos vacía.
-- [ ] `dotnet run` levanta la API y `/swagger` carga.
-- [ ] `GET /api/lugares` responde 200.
-- [ ] El `.gitignore` impide subir `bin/`, `obj/` y `*.db`.
+- [x] `dotnet build` termina con 0 errores. **0 errores, 0 advertencias.**
+- [x] `dotnet ef database update` aplica la migración sobre una base de datos vacía.
+      Migración `20260731064746_Inicial`.
+- [x] `dotnet run` levanta la API y `/swagger` carga. **HTTP 200.**
+- [x] `GET /api/lugares` responde 200. Devuelve `[]` porque el seed es de PLAN-01.
+- [x] El `.gitignore` impide subir `bin/`, `obj/` y `*.db`. Verificado con `git check-ignore`.
 - [ ] PR mergeado y estado de PLAN-01, PLAN-02 y PLAN-03 actualizado a "Listo para empezar"
       en `PLANES/README.md`.
