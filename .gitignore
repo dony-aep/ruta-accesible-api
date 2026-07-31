@@ -1,0 +1,32 @@
+# Compilacion de .NET
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+
+# Base de datos local de SQLite: se regenera con dotnet ef database update
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Configuracion local: puede contener la clave del LLM.
+# La clave va en dotnet user-secrets, nunca en el repositorio.
+appsettings.Development.json
+appsettings.Local.json
+*.env
+.env
+
+# Herramientas y editores
+.vs/
+.vscode/
+.idea/
+*.swp
+
+# Sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store

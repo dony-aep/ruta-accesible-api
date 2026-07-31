@@ -1,0 +1,42 @@
+# Dueno de cada area. GitHub pide su revision automaticamente al tocar estos archivos.
+#
+# ANTES de copiar este archivo a la raiz del repositorio ruta-accesible-api:
+# reemplazar cada marcador @plan-NN por el usuario real de GitHub que tomo ese plan
+# en la reunion. Ver la tabla "Equipo" de PLANES/README.md.
+#
+# En CODEOWNERS gana la ultima regla que coincide, por eso las rutas especificas
+# van despues de las generales.
+
+# PLAN-00 - Backend / TL
+/RutaAccesible.sln                          @dony-aep
+/Api/Api.csproj                             @dony-aep
+/Api/Program.cs                             @dony-aep
+/Api/Models/                                @dony-aep
+/Api/Data/AppDbContext.cs                   @dony-aep
+/Api/Migrations/                            @dony-aep
+/appsettings.json                           @dony-aep
+/.gitignore                                 @dony-aep
+
+# PLAN-01 - BD / DTOs (1): lugares, DTOs y seed
+/Api/Dtos/                                  @plan-01
+/Api/Data/SeedData.cs                       @plan-01
+/Api/Configuracion/ServiciosDatos.cs        @plan-01
+/Api/Controllers/LugaresController.cs       @plan-01
+
+# PLAN-02 - API / IA
+/Api/Services/                              @plan-02
+/Api/Configuracion/ServiciosIa.cs           @plan-02
+/Api/Dtos/AnalisisDto.cs                    @plan-02
+/Api/Controllers/ReportesController.cs      @plan-02
+
+# PLAN-03 - BD / DTOs (2): catalogo y estadisticas
+/Api/Dtos/TipoBarreraDto.cs                 @plan-03
+/Api/Dtos/TipoBarreraCrearDto.cs            @plan-03
+/Api/Dtos/EstadisticasDto.cs                @plan-03
+/Api/Controllers/TiposBarreraController.cs  @plan-03
+/Api/Controllers/EstadisticasController.cs  @plan-03
+
+# PLAN-04 - Docs / QA
+/README.md                                  @plan-04
+/screenshots/                               @plan-04
+/docs/                                      @plan-04
