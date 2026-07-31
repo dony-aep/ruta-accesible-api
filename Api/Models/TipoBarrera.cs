@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Api.Models;
 
 /// <summary>
-/// Criterio de accesibilidad de la NTC 6047:2013. Es el catalogo cerrado contra el
+/// Criterio de accesibilidad de la NTC 6047:2013. Es el catálogo cerrado contra el
 /// que el modelo de lenguaje clasifica cada reporte.
 /// </summary>
 public class TipoBarrera
@@ -23,6 +23,6 @@ public class TipoBarrera
     [MaxLength(400)]
     public string CriterioNorma { get; set; } = string.Empty;
 
-    // Propiedad de navegacion: un criterio clasifica muchos reportes
+    // Propiedad de navegación: un criterio clasifica muchos reportes
     public List<ReporteAccesibilidad> Reportes { get; set; } = new();
 }

@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations;
 namespace Api.Models;
 
 /// <summary>
-/// Recurso principal de la API. Lo crea el ciudadano con una descripcion en texto
-/// libre y lo enriquece el endpoint de analisis con IA.
+/// Recurso principal de la API. Lo crea el ciudadano con una descripción en texto
+/// libre y lo enriquece el endpoint de análisis con IA.
 /// </summary>
 public class ReporteAccesibilidad
 {
@@ -14,27 +14,27 @@ public class ReporteAccesibilidad
 
     public Lugar? Lugar { get; set; }
 
-    // Nulo al crear. Lo asigna el endpoint de analisis: exigirle al ciudadano que
-    // conozca la taxonomia de una norma tecnica trasladaria el problema.
+    // Nulo al crear. Lo asigna el endpoint de análisis: exigirle al ciudadano que
+    // conozca la taxonomía de una norma técnica trasladaría el problema.
     public int? TipoBarreraId { get; set; }
 
     public TipoBarrera? TipoBarrera { get; set; }
 
-    // Seudonimo de quien reporta. Nunca datos personales reales.
+    // Seudónimo de quien reporta. Nunca datos personales reales.
     [Required]
     [MaxLength(60)]
     public string Usuario { get; set; } = string.Empty;
 
     public DateTime FechaReporte { get; set; } = DateTime.UtcNow;
 
-    // Texto libre del ciudadano. Es lo que alimenta el analisis con IA.
+    // Texto libre del ciudadano. Es lo que alimenta el análisis con IA.
     [Required]
     [MaxLength(1000)]
     public string Descripcion { get; set; } = string.Empty;
 
     public EstadoReporte Estado { get; set; } = EstadoReporte.Registrado;
 
-    // Los cuatro campos siguientes los completa el endpoint de analisis con IA.
+    // Los cuatro campos siguientes los completa el endpoint de análisis con IA.
     public NivelSeveridad? Severidad { get; set; }
 
     [MaxLength(1000)]

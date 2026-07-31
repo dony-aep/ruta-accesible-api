@@ -57,11 +57,11 @@ Api/
   Dtos/            Request/Response, separados de las entidades
   Data/            AppDbContext + SeedData
   Services/        servicio del modelo de lenguaje
-  Configuracion/   extensiones de inyeccion de dependencias
+  Configuracion/   extensiones de inyección de dependencias
   Migrations/      generadas por dotnet ef
 docs/
-  especificacion.md        diseno acordado: modelo de datos, endpoints, integracion con IA
-  referencia-ntc6047.md    taxonomia de la norma, cifras y riesgos del modelo
+  especificacion.md        diseño acordado: modelo de datos, endpoints, integración con IA
+  referencia-ntc6047.md    taxonomía de la norma, cifras y riesgos del modelo
 PLANES/            reparto del trabajo por integrante
 ```
 

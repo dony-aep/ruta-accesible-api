@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace Api.Models;
 
 /// <summary>
-/// Espacio publico de Barranquilla sobre el que los ciudadanos reportan barreras.
+/// Espacio público de Barranquilla sobre el que los ciudadanos reportan barreras.
 /// </summary>
 public class Lugar
 {
@@ -31,9 +31,9 @@ public class Lugar
     public double Longitud { get; set; }
 
     // La NTC 6047 aplica a los puntos de servicio al ciudadano. Marcarlo permite
-    // distinguir donde el incumplimiento tiene consecuencia juridica y no solo tecnica.
+    // distinguir donde el incumplimiento tiene consecuencia jurídica y no solo técnica.
     public bool EsServicioAlCiudadano { get; set; }
 
-    // Propiedad de navegacion: un lugar acumula muchos reportes
+    // Propiedad de navegación: un lugar acumula muchos reportes
     public List<ReporteAccesibilidad> Reportes { get; set; } = new();
 }

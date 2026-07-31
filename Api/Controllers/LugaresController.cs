@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Api.Controllers;
 
 /// <summary>
-/// Lugares publicos sobre los que se reportan barreras de accesibilidad.
+/// Lugares públicos sobre los que se reportan barreras de accesibilidad.
 /// </summary>
 /// <remarks>
 /// PLAN-00 deja solo el GET de la lista para probar que la persistencia funciona.

@@ -32,12 +32,12 @@ public class AppDbContext : DbContext
             .HasForeignKey(r => r.TipoBarreraId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        // El codigo del criterio es su identificador de negocio.
+        // El código del criterio es su identificador de negocio.
         modelBuilder.Entity<TipoBarrera>()
             .HasIndex(t => t.Codigo)
             .IsUnique();
 
-        // Guardar los enum como texto y no como numero: la base de datos y la demo
+        // Guardar los enum como texto y no como número: la base de datos y la demo
         // se leen mejor, y un cambio de orden en el enum no corrompe los datos.
         modelBuilder.Entity<ReporteAccesibilidad>()
             .Property(r => r.Estado)
