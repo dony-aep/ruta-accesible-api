@@ -31,7 +31,7 @@ En desarrollo. Ver `PLANES/README.md` para el avance de cada frente de trabajo.
 
 | Frente | Estado |
 |---|---|
-| PLAN-00 — Fundación: modelos, `AppDbContext`, migración, Swagger | En revisión |
+| PLAN-00 — Fundación: modelos, `AppDbContext`, migración, Swagger | Completado |
 | PLAN-01 — Datos y contratos: DTOs, seed, CRUD de `Lugar`, búsqueda | Listo para empezar |
 | PLAN-02 — Análisis con IA: servicio de Gemini y endpoint `analizar` | Listo para empezar |
 | PLAN-03 — Catálogo y consultas: `TipoBarrera` y estadísticas | Listo para empezar |
@@ -117,8 +117,8 @@ proyecto no las afirma. Detalle en `docs/referencia-ntc6047.md`.
 | Integrante | Rol | Plan |
 |---|---|---|
 | Doney (@dony-aep) | Backend / TL | PLAN-00 |
-| Edwin | por asignar | por asignar |
-| Zamith | por asignar | por asignar |
+| Edwin (@Edwin252002) | Docs / QA | PLAN-04 |
+| Zamith (@Zamith101) | BD / DTOs (1) | PLAN-01 |
 | Gabriela | por asignar | por asignar |
 | Dilan | por asignar | por asignar |
 

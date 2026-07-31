@@ -33,13 +33,13 @@ El nombre sigue la convención del profesor en sus ejemplos (`eco-puntos-api`,
       entregado el 30 de julio (`../docs/especificacion.md`).
 - [x] Repositorio `ruta-accesible-api` creado en GitHub, público, con descripción y topics.
 - [ ] Los 4 compañeros invitados como colaboradores con permiso de escritura.
-      **Invitados @Zamith101 (PLAN-01) y @Edwin252002 (PLAN-04), pendientes de aceptar.
-      Faltan los usuarios de GitHub de Gabriela y Dilan.**
+      **Dentro: @Zamith101 (PLAN-01) y @Edwin252002 (PLAN-04). Faltan los usuarios de
+      GitHub de Gabriela y Dilan.**
 - [x] `PLANES/`, `.github/CODEOWNERS` y `.github/pull_request_template.md` en la raíz del
       repositorio. En `CODEOWNERS` quedan sin asignar los marcadores `@plan-02` y `@plan-03`.
-- [ ] Protección de `main` activada: sin push directo, PR con al menos una aprobación.
-      **Se activa cuando entren los colaboradores**, no antes: con un solo miembro, exigir
-      aprobación de otra persona bloquearía el propio PLAN-00.
+- [x] Protección de `main` activada: sin push directo, PR con al menos una aprobación.
+      Se activó tras mergear este plan, ya con dos colaboradores dentro: antes, exigir la
+      aprobación de otra persona habría bloqueado el propio PLAN-00.
 
 ## Archivos que este plan posee
 
@@ -126,5 +126,7 @@ Al mergear este plan, los otros roles pueden asumir que existe:
 - [x] `dotnet run` levanta la API y `/swagger` carga. **HTTP 200.**
 - [x] `GET /api/lugares` responde 200. Devuelve `[]` porque el seed es de PLAN-01.
 - [x] El `.gitignore` impide subir `bin/`, `obj/` y `*.db`. Verificado con `git check-ignore`.
-- [ ] PR mergeado y estado de PLAN-01, PLAN-02 y PLAN-03 actualizado a "Listo para empezar"
-      en `PLANES/README.md`.
+- [x] PR mergeado y estado de PLAN-01, PLAN-02 y PLAN-03 actualizado a "Listo para empezar"
+      en `PLANES/README.md`. PR #1 mergeado el 31 de julio de 2026 (commit `733e262`).
+
+**PLAN-00 cerrado.** PLAN-01, PLAN-02 y PLAN-03 pueden arrancar desde `main`.
