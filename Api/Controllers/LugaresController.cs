@@ -22,6 +22,7 @@ public class LugaresController : ControllerBase
     {
         var lugares = await _contexto.Lugares
             .Include(l => l.Reportes)
+                .ThenInclude(r => r.TipoBarrera)
             .Select(l => MapearALugarDto(l))
             .ToListAsync();
 
@@ -33,6 +34,7 @@ public class LugaresController : ControllerBase
     {
         var lugar = await _contexto.Lugares
             .Include(l => l.Reportes)
+                .ThenInclude(r => r.TipoBarrera)
             .FirstOrDefaultAsync(l => l.Id == id);
 
         if (lugar == null)
@@ -45,9 +47,13 @@ public class LugaresController : ControllerBase
     public async Task<ActionResult<IEnumerable<LugarDto>>> Buscar(
         [FromQuery] string? tipo,
         [FromQuery] string? zona,
+        [FromQuery] bool? soloServicioCiudadano,
         [FromQuery] bool? sinBarrerasCriticas)
     {
-        var query = _contexto.Lugares.Include(l => l.Reportes).AsQueryable();
+        var query = _contexto.Lugares
+            .Include(l => l.Reportes)
+                .ThenInclude(r => r.TipoBarrera)
+            .AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(tipo))
             query = query.Where(l => l.Tipo.ToLower() == tipo.ToLower());
@@ -55,8 +61,13 @@ public class LugaresController : ControllerBase
         if (!string.IsNullOrWhiteSpace(zona))
             query = query.Where(l => l.Zona.ToLower() == zona.ToLower());
 
-        if (sinBarrerasCriticas.HasValue && sinBarrerasCriticas.Value)
-            query = query.Where(l => !l.Reportes.Any());
+        if (soloServicioCiudadano == true)
+            query = query.Where(l => l.EsServicioAlCiudadano);
+
+        // Sin barreras críticas significa sin reportes de severidad Alta, no sin
+        // reportes: un lugar con una barrera leve sigue siendo transitable.
+        if (sinBarrerasCriticas == true)
+            query = query.Where(l => !l.Reportes.Any(r => r.Severidad == NivelSeveridad.Alta));
 
         var resultados = await query.Select(l => MapearALugarDto(l)).ToListAsync();
 
@@ -73,7 +84,8 @@ public class LugaresController : ControllerBase
             Zona = dto.Zona,
             Direccion = dto.Direccion,
             Latitud = dto.Latitud,
-            Longitud = dto.Longitud
+            Longitud = dto.Longitud,
+            EsServicioAlCiudadano = dto.EsServicioAlCiudadano
         };
 
         _contexto.Lugares.Add(nuevoLugar);
@@ -97,6 +109,7 @@ public class LugaresController : ControllerBase
         lugar.Direccion = dto.Direccion;
         lugar.Latitud = dto.Latitud;
         lugar.Longitud = dto.Longitud;
+        lugar.EsServicioAlCiudadano = dto.EsServicioAlCiudadano;
 
         await _contexto.SaveChangesAsync();
 
@@ -117,36 +130,27 @@ public class LugaresController : ControllerBase
         return NoContent();
     }
 
-private static LugarDto MapearALugarDto(Lugar l) => new LugarDto
+    private static LugarDto MapearALugarDto(Lugar l) => new LugarDto
     {
         Id = l.Id,
-        Nombre = l.Nombre ?? string.Empty,
-        Tipo = l.Tipo ?? string.Empty,
-        Zona = l.Zona ?? string.Empty,
-        Direccion = l.Direccion ?? string.Empty,
-        Latitud = (decimal)l.Latitud,
-        Longitud = (decimal)l.Longitud,
-        TieneBarrerasCriticas = l.Reportes != null && l.Reportes.Any(),
-        Reportes = l.Reportes?.Select(r => new ReporteDto
+        Nombre = l.Nombre,
+        Tipo = l.Tipo,
+        Zona = l.Zona,
+        Direccion = l.Direccion,
+        Latitud = l.Latitud,
+        Longitud = l.Longitud,
+        EsServicioAlCiudadano = l.EsServicioAlCiudadano,
+        TieneBarrerasCriticas = l.Reportes.Any(r => r.Severidad == NivelSeveridad.Alta),
+        Reportes = l.Reportes.Select(r => new ReporteDto
         {
             Id = r.Id,
             LugarId = r.LugarId,
-            Descripción = r.Descripcion ?? string.Empty,
-            TipoBarrera = r.TipoBarrera?.Nombre ?? "General",
-            FechaCreación = r.FechaReporte
-        }).ToList() ?? new List<ReporteDto>()
+            Usuario = r.Usuario,
+            Descripcion = r.Descripcion,
+            Estado = r.Estado.ToString(),
+            TipoBarrera = r.TipoBarrera?.Nombre,
+            Severidad = r.Severidad?.ToString(),
+            FechaReporte = r.FechaReporte
+        }).ToList()
     };
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
