@@ -23,4 +23,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<Api.Data.AppDbContext>();
+    await Api.Data.SeedData.InicializarAsync(context);
+}
+
 app.Run();
