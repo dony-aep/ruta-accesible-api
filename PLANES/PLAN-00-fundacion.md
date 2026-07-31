@@ -33,9 +33,10 @@ El nombre sigue la convención del profesor en sus ejemplos (`eco-puntos-api`,
       entregado el 30 de julio (`../docs/especificacion.md`).
 - [x] Repositorio `ruta-accesible-api` creado en GitHub, público, con descripción y topics.
 - [ ] Los 4 compañeros invitados como colaboradores con permiso de escritura.
-      **Pendiente: faltan sus usuarios de GitHub.**
+      **Invitados @Zamith101 (PLAN-01) y @Edwin252002 (PLAN-04), pendientes de aceptar.
+      Faltan los usuarios de GitHub de Gabriela y Dilan.**
 - [x] `PLANES/`, `.github/CODEOWNERS` y `.github/pull_request_template.md` en la raíz del
-      repositorio. Los roles siguen sin asignar en `CODEOWNERS` (marcadores `@plan-01`…`@plan-04`).
+      repositorio. En `CODEOWNERS` quedan sin asignar los marcadores `@plan-02` y `@plan-03`.
 - [ ] Protección de `main` activada: sin push directo, PR con al menos una aprobación.
       **Se activa cuando entren los colaboradores**, no antes: con un solo miembro, exigir
       aprobación de otra persona bloquearía el propio PLAN-00.

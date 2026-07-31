@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Rol | Docs / QA |
-| Responsable | (por asignar) |
+| Responsable | Edwin — @Edwin252002 |
 | Rama | `plan-04-docs` |
 | Depende de | PLAN-01, PLAN-02 y PLAN-03 mergeados |
 | Desbloquea | PLAN-05 |

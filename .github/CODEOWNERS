@@ -1,8 +1,9 @@
 # Dueno de cada area. GitHub pide su revision automaticamente al tocar estos archivos.
 #
-# ANTES de copiar este archivo a la raiz del repositorio ruta-accesible-api:
-# reemplazar cada marcador @plan-NN por el usuario real de GitHub que tomo ese plan
-# en la reunion. Ver la tabla "Equipo" de PLANES/README.md.
+# Quedan por reemplazar los marcadores @plan-02 y @plan-03 por los usuarios reales
+# de GitHub cuando se asignen esos dos planes. Ver la tabla "Equipo" de PLANES/README.md.
+# GitHub marca como error las lineas con un marcador sin resolver; las demas reglas
+# siguen aplicando.
 #
 # En CODEOWNERS gana la ultima regla que coincide, por eso las rutas especificas
 # van despues de las generales.
@@ -18,10 +19,10 @@
 /.gitignore                                 @dony-aep
 
 # PLAN-01 - BD / DTOs (1): lugares, DTOs y seed
-/Api/Dtos/                                  @plan-01
-/Api/Data/SeedData.cs                       @plan-01
-/Api/Configuracion/ServiciosDatos.cs        @plan-01
-/Api/Controllers/LugaresController.cs       @plan-01
+/Api/Dtos/                                  @Zamith101
+/Api/Data/SeedData.cs                       @Zamith101
+/Api/Configuracion/ServiciosDatos.cs        @Zamith101
+/Api/Controllers/LugaresController.cs       @Zamith101
 
 # PLAN-02 - API / IA
 /Api/Services/                              @plan-02
@@ -37,6 +38,6 @@
 /Api/Controllers/EstadisticasController.cs  @plan-03
 
 # PLAN-04 - Docs / QA
-/README.md                                  @plan-04
-/screenshots/                               @plan-04
-/docs/                                      @plan-04
+/README.md                                  @Edwin252002
+/screenshots/                               @Edwin252002
+/docs/                                      @Edwin252002
