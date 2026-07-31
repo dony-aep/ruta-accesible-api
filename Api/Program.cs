@@ -23,10 +23,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-using (var scope = app.Services.CreateScope())
-{
-    var context = scope.ServiceProvider.GetRequiredService<Api.Data.AppDbContext>();
-    await Api.Data.SeedData.InicializarAsync(context);
-}
+// Seed inicial: catálogo de la NTC 6047, lugares y reportes. Ver PLAN-01.
+await ServiciosDatos.CargarSeedAsync(app.Services);
 
 app.Run();
