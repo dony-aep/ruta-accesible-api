@@ -241,10 +241,10 @@ controlador, un controlador por persona, dando cinco frentes de trabajo en total
 | Integrante | Rol | Plan | Primera tarea asignada |
 | --- | --- | --- | --- |
 | Doney (@dony-aep) | Backend / TL | PLAN-00 | Crear el repositorio y la estructura inicial |
-| Edwin | Por asignar | Por asignar | Por asignar |
-| Zamith | Por asignar | Por asignar | Por asignar |
-| Gabriela | Por asignar | Por asignar | Por asignar |
-| Dilan | Por asignar | Por asignar | Por asignar |
+| Zamith (@Zamith101) | BD / DTOs (1) | PLAN-01 | DTOs, seed, CRUD de `Lugar` y búsqueda |
+| Dilan (@dilansara-jpg) | API / IA | PLAN-02 | Servicio de Gemini y endpoint de análisis |
+| Gabriela (@gabyd20) | BD / DTOs (2) | PLAN-03 | Catálogo de `TipoBarrera` y estadísticas |
+| Edwin (@Edwin252002) | Docs / QA | PLAN-04 | README, capturas y batería de pruebas |
 
 > Los cinco frentes de trabajo previstos son: Backend / TL, BD / DTOs (1), API / IA, BD / DTOs (2)
 > y Docs / QA. El detalle de qué construye cada frente está en `../PLANES/README.md`. La

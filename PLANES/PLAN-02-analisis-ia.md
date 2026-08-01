@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Rol | API / IA |
-| Responsable | (por asignar) |
+| Responsable | Dilan — @dilansara-jpg |
 | Rama | `plan-02-ia` |
 | Depende de | PLAN-00 mergeado en `main` |
 | Desbloquea | PLAN-04 |

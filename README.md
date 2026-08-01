@@ -121,8 +121,8 @@ proyecto no las afirma. Detalle en `docs/referencia-ntc6047.md`.
 | Doney (@dony-aep) | Backend / TL | PLAN-00 |
 | Edwin (@Edwin252002) | Docs / QA | PLAN-04 |
 | Zamith (@Zamith101) | BD / DTOs (1) | PLAN-01 |
-| Gabriela | por asignar | por asignar |
-| Dilan | por asignar | por asignar |
+| Gabriela (@gabyd20) | BD / DTOs (2) | PLAN-03 |
+| Dilan (@dilansara-jpg) | API / IA | PLAN-02 |
 
 ## Cómo contribuir
 

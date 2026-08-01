@@ -27,8 +27,8 @@ toca**. Si no coincide con nadie, pregunta antes de actuar: no asumas.
 | `@dony-aep` | Doney Peña (TL) | PLAN-00 — Fundación | `plan-00-fundacion` | Solución, modelos, `AppDbContext`, migración, Swagger |
 | `@Zamith101` | Zamith Moscote | PLAN-01 — Datos y contratos | `plan-01-datos` | DTOs, validaciones, seed, CRUD de `Lugar`, búsqueda |
 | `@Edwin252002` | Edwin Lasso | PLAN-04 — Documentación y QA | `plan-04-docs` | README, tabla de endpoints, capturas, pruebas |
-| sin asignar | Gabriela de Hoyos | PLAN-02 o PLAN-03 | — | Pendiente de reparto |
-| sin asignar | Dilan Sara | PLAN-02 o PLAN-03 | — | Pendiente de reparto |
+| `@dilansara-jpg` | Dilan Sara | PLAN-02 — Análisis con IA | `plan-02-ia` | Servicio de Gemini, CRUD de `ReporteAccesibilidad`, endpoint `analizar` |
+| `@gabyd20` | Gabriela de Hoyos | PLAN-03 — Catálogo y consultas | `plan-03-catalogo` | CRUD de `TipoBarrera`, borrado protegido, estadísticas por zona |
 
 Al reconocer a un colaborador: dile a qué plan está asignado, lee su `PLANES/PLAN-0N-*.md` y
 resúmele sus tareas pendientes, su rama y los archivos que ese plan declara como propios. Si

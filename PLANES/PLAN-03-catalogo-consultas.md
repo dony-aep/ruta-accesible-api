@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Rol | BD / DTOs (segundo integrante del rol) |
-| Responsable | (por asignar) |
+| Responsable | Gabriela — @gabyd20 |
 | Rama | `plan-03-catalogo` |
 | Depende de | PLAN-00 mergeado en `main` |
 | Desbloquea | PLAN-04 |

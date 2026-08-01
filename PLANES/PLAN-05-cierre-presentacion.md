@@ -52,10 +52,10 @@ una sola persona responda por trabajo que no hizo.
 | Plan | Integrante | Sección |
 |---|---|---|
 | PLAN-00 | @dony-aep | Arquitectura y modelo de datos |
-| PLAN-01 | (por asignar) | DTOs, validaciones y búsqueda |
-| PLAN-02 | (por asignar) | Integración con IA y manejo del fallo |
-| PLAN-03 | (por asignar) | Catálogo, consultas y estadísticas |
-| PLAN-04 | (por asignar) | Demo en vivo y aprendizajes |
+| PLAN-01 | @Zamith101 | DTOs, validaciones y búsqueda |
+| PLAN-02 | @dilansara-jpg | Integración con IA y manejo del fallo |
+| PLAN-03 | @gabyd20 | Catálogo, consultas y estadísticas |
+| PLAN-04 | @Edwin252002 | Demo en vivo y aprendizajes |
 
 ## Buenas prácticas obligatorias
 

@@ -32,11 +32,11 @@ El nombre sigue la convención del profesor en sus ejemplos (`eco-puntos-api`,
 - [ ] Idea y entidades aprobadas en la reunión del jueves 30. **Hecho:** taller de definición
       entregado el 30 de julio (`../docs/especificacion.md`).
 - [x] Repositorio `ruta-accesible-api` creado en GitHub, público, con descripción y topics.
-- [ ] Los 4 compañeros invitados como colaboradores con permiso de escritura.
-      **Dentro: @Zamith101 (PLAN-01) y @Edwin252002 (PLAN-04). Faltan los usuarios de
-      GitHub de Gabriela y Dilan.**
+- [x] Los 4 compañeros invitados como colaboradores con permiso de escritura.
+      **Dentro: @Zamith101 (PLAN-01) y @Edwin252002 (PLAN-04). Invitados y pendientes de
+      aceptar: @dilansara-jpg (PLAN-02) y @gabyd20 (PLAN-03).**
 - [x] `PLANES/`, `.github/CODEOWNERS` y `.github/pull_request_template.md` en la raíz del
-      repositorio. En `CODEOWNERS` quedan sin asignar los marcadores `@plan-02` y `@plan-03`.
+      repositorio. Los seis planes tienen dueño en `CODEOWNERS`.
 - [x] Protección de `main` activada: sin push directo, PR con al menos una aprobación.
       Se activó tras mergear este plan, ya con dos colaboradores dentro: antes, exigir la
       aprobación de otra persona habría bloqueado el propio PLAN-00.
