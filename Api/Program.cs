@@ -23,4 +23,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Seed inicial: catálogo de la NTC 6047, lugares y reportes. Ver PLAN-01.
+await ServiciosDatos.CargarSeedAsync(app.Services);
+
 app.Run();
