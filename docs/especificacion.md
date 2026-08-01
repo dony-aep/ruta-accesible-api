@@ -63,7 +63,7 @@ enriquece la IA. `Lugar` y `TipoBarrera` son catálogos de apoyo sobre los que s
 | Estado             | enum                     |          Sí | Registrado, Analizado, Verificado, Atendido                          |
 | AnalisisIa         | string?                  |          No | Justificación devuelta por el modelo                                 |
 | AjusteRazonable    | string?                  |          No | Adecuación sugerida según la norma                                   |
-| CertezaIa          | decimal? (0–1)           |          No | Nivel de certeza declarado por el modelo                             |
+| CertezaIa          | double? (0–1)            |          No | Nivel de certeza declarado por el modelo                             |
 
 `TipoBarreraId` es nullable a propósito: exigirle al ciudadano que conozca la taxonomía de una
 norma técnica trasladaría el problema. El endpoint de análisis es el que la completa.
@@ -93,8 +93,8 @@ erDiagram
         string Direccion
         string Tipo
         string Zona
-        decimal Latitud
-        decimal Longitud
+        double Latitud
+        double Longitud
         bool EsServicioAlCiudadano
     }
 
@@ -116,7 +116,7 @@ erDiagram
         string Estado
         string AnalisisIa
         string AjusteRazonable
-        decimal CertezaIa
+        double CertezaIa
     }
 ```
 
