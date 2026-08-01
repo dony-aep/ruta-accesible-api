@@ -63,7 +63,7 @@ nuevo, pedirlo al responsable de PLAN-00.
    | Gran Malecón del Río | Espacio público |
    | Plaza de la Paz Juan Pablo II | Plaza pública |
    | Estadio Metropolitano Roberto Meléndez | Escenario deportivo |
-   | Mercado de Barranquilita | Mercado público |
+   | Mercado Público del Caribe (Barranquillita) | Mercado público |
 
    Direcciones y coordenadas: **tomarlas de Google Maps, no inventarlas**. La latitud y la
    longitud son dos campos `decimal`; no se necesita ningún servicio de geocodificación.
@@ -97,9 +97,9 @@ probar el análisis con IA sin inventar datos.
 
 ## Definición de terminado
 
-- [ ] `dotnet build` con 0 errores.
-- [ ] Los cinco endpoints CRUD de `Lugar` responden con los códigos correctos (200, 201, 204, 400, 404).
-- [ ] `GET /api/lugares/buscar` filtra por los tres parámetros, juntos y por separado.
-- [ ] Base de datos borrada y recreada queda poblada por el seed.
-- [ ] Ningún endpoint devuelve entidades crudas.
-- [ ] PR mergeado y estado actualizado en `PLANES/README.md`.
+- [x] `dotnet build` con 0 errores.
+- [x] Los cinco endpoints CRUD de `Lugar` responden con los códigos correctos (200, 201, 204, 400, 404).
+- [x] `GET /api/lugares/buscar` filtra por los cuatro parámetros, juntos y por separado.
+- [x] Base de datos borrada y recreada queda poblada por el seed.
+- [x] Ningún endpoint devuelve entidades crudas.
+- [x] PR mergeado y estado actualizado en `PLANES/README.md`.

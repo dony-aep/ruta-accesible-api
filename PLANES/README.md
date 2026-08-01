@@ -2,9 +2,9 @@
 
 > **Tema confirmado por votación unánime del equipo: 5 de 5.** Idea presentada y taller de
 > definición entregado el 30 de julio de 2026.
-> **PLAN-00 está mergeado en `main`: PLAN-01, PLAN-02 y PLAN-03 ya pueden arrancar.**
-> Asignados PLAN-01 (@Zamith101) y PLAN-04 (@Edwin252002). Faltan PLAN-02 y PLAN-03:
-> recoger los usuarios de GitHub de Gabriela y Dilan y repartirlos.
+> **PLAN-00 y PLAN-01 están mergeados en `main`.** La API ya tiene DTOs, el CRUD de `Lugar`,
+> el endpoint de búsqueda y el seed poblado: PLAN-02 y PLAN-03 pueden arrancar sobre datos
+> reales. Siguen sin dueño: recoger los usuarios de GitHub de Gabriela y Dilan y repartirlos.
 
 **Diseño acordado (problema, modelo de datos, los 18 endpoints, integración con IA):**
 `../docs/especificacion.md`. Es la fuente de verdad del contrato de cada controlador.
@@ -74,7 +74,7 @@ no queden dos personas en el mismo plan ni planes sin dueño, y actualiza esta t
 | Plan | Rol | Qué construye | Rama | Responsable | Estado |
 |---|---|---|---|---|---|
 | [PLAN-00](PLAN-00-fundacion.md) — Fundación | Backend / TL | Repositorio, solución, modelos, `AppDbContext`, migración inicial, Swagger | `plan-00-fundacion` | @dony-aep | **Completado — mergeado en `main`** |
-| [PLAN-01](PLAN-01-datos-contratos.md) — Datos y contratos | BD / DTOs (1) | DTOs, validaciones, seed de Barranquilla, CRUD de `Lugar`, endpoint de búsqueda | `plan-01-datos` | @Zamith101 | **Listo para empezar** |
+| [PLAN-01](PLAN-01-datos-contratos.md) — Datos y contratos | BD / DTOs (1) | DTOs, validaciones, seed de Barranquilla, CRUD de `Lugar`, endpoint de búsqueda | `plan-01-datos` | @Zamith101 | **Completado — mergeado en `main`** |
 | [PLAN-02](PLAN-02-analisis-ia.md) — Análisis con IA | API / IA | Servicio de Gemini, CRUD de `ReporteAccesibilidad`, endpoint `analizar`, manejo del fallo | `plan-02-ia` | por asignar | **Listo para empezar** |
 | [PLAN-03](PLAN-03-catalogo-consultas.md) — Catálogo y consultas | BD / DTOs (2) | CRUD de `TipoBarrera`, borrado protegido, estadísticas por zona | `plan-03-catalogo` | por asignar | **Listo para empezar** |
 | [PLAN-04](PLAN-04-documentacion-qa.md) — Documentación y QA | Docs / QA | README, tabla de endpoints, capturas, batería de pruebas, anotaciones de Swagger | `plan-04-docs` | @Edwin252002 | Bloqueado por 01, 02 y 03 |
