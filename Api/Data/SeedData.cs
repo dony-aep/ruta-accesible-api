@@ -114,8 +114,8 @@ namespace Api.Data
                     Tipo = "Sede administrativa",
                     Zona = "Centro",
                     Direccion = "Calle 34 # 43-31",
-                    Latitud = 10.9789,
-                    Longitud = -74.7780,
+                    Latitud = 10.9814933,
+                    Longitud = -74.7781999,
                     EsServicioAlCiudadano = true,
                     Reportes =
                     {
@@ -141,12 +141,12 @@ namespace Api.Data
                 },
                 new Lugar
                 {
-                    Nombre = "Biblioteca Departamental Meira Delmar",
+                    Nombre = "Biblioteca Pública Departamental Meira Delmar",
                     Tipo = "Biblioteca pública",
                     Zona = "Centro",
-                    Direccion = "Calle 38 # 38-86",
-                    Latitud = 10.9812,
-                    Longitud = -74.7815,
+                    Direccion = "Calle 38 # 38B-21",
+                    Latitud = 10.9784627,
+                    Longitud = -74.7819745,
                     EsServicioAlCiudadano = true,
                     Reportes =
                     {
@@ -176,8 +176,8 @@ namespace Api.Data
                     Tipo = "Museo",
                     Zona = "Centro",
                     Direccion = "Calle 36 # 46-66",
-                    Latitud = 10.9905,
-                    Longitud = -74.7853,
+                    Latitud = 10.9863091,
+                    Longitud = -74.7781735,
                     EsServicioAlCiudadano = true,
                     Reportes =
                     {
@@ -191,12 +191,12 @@ namespace Api.Data
                 },
                 new Lugar
                 {
-                    Nombre = "Terminal Metropolitana de Transporte",
+                    Nombre = "Terminal Metropolitana de Transportes de Barranquilla",
                     Tipo = "Terminal",
                     Zona = "Sur",
-                    Direccion = "Carrera 45 # 4-56, Prolongación Avenida Murillo",
-                    Latitud = 10.8869,
-                    Longitud = -74.7797,
+                    Direccion = "Carrera 14 # 54-186, Soledad",
+                    Latitud = 10.9089005,
+                    Longitud = -74.7934430,
                     EsServicioAlCiudadano = true,
                     Reportes =
                     {
@@ -222,12 +222,12 @@ namespace Api.Data
                 },
                 new Lugar
                 {
-                    Nombre = "Estación Central de Transmetro",
+                    Nombre = "Estación de Transmetro La Catedral",
                     Tipo = "Estación de transporte",
                     Zona = "Centro",
-                    Direccion = "Avenida Olaya Herrera con Calle 30",
-                    Latitud = 10.9852,
-                    Longitud = -74.7861,
+                    Direccion = "Avenida Olaya Herrera",
+                    Latitud = 10.9885116,
+                    Longitud = -74.7891316,
                     EsServicioAlCiudadano = true,
                     Reportes =
                     {
@@ -253,19 +253,19 @@ namespace Api.Data
                 },
                 new Lugar
                 {
-                    Nombre = "Portal de Transmetro Joe Arroyo",
+                    Nombre = "Estación de Transmetro Joe Arroyo",
                     Tipo = "Estación de transporte",
-                    Zona = "Sur",
-                    Direccion = "Avenida Murillo con Carrera 8, Soledad",
-                    Latitud = 10.9165,
-                    Longitud = -74.7784,
+                    Zona = "Norte",
+                    Direccion = "Calle 74 # 452",
+                    Latitud = 10.9952077,
+                    Longitud = -74.8075524,
                     EsServicioAlCiudadano = true,
                     Reportes =
                     {
                         new ReporteAccesibilidad
                         {
                             Usuario = "madre_comunitaria",
-                            Descripcion = "El puente peatonal para entrar al portal solo tiene escaleras y los pasamanos están sueltos, con coche de bebé o con muletas es imposible.",
+                            Descripcion = "El puente peatonal para entrar a la estación solo tiene escaleras y los pasamanos están sueltos, con coche de bebé o con muletas es imposible.",
                             FechaReporte = hoy.AddDays(-16)
                         },
                         new ReporteAccesibilidad
@@ -281,9 +281,9 @@ namespace Api.Data
                     Nombre = "Plaza de la Paz Juan Pablo II",
                     Tipo = "Plaza pública",
                     Zona = "Centro",
-                    Direccion = "Calle 53 con Carrera 46",
-                    Latitud = 10.9930,
-                    Longitud = -74.7902,
+                    Direccion = "Calle 53 # 46-07",
+                    Latitud = 10.9880227,
+                    Longitud = -74.7892859,
                     EsServicioAlCiudadano = false,
                     Reportes =
                     {
@@ -303,12 +303,12 @@ namespace Api.Data
                 },
                 new Lugar
                 {
-                    Nombre = "Mercado de Barranquilita",
+                    Nombre = "Mercado Público del Caribe",
                     Tipo = "Mercado público",
                     Zona = "Centro",
-                    Direccion = "Calle 8 con Carrera 38",
-                    Latitud = 10.9766,
-                    Longitud = -74.7723,
+                    Direccion = "Calle 34 esquina Carrera 46, sector Barranquillita",
+                    Latitud = 10.9853327,
+                    Longitud = -74.7777389,
                     EsServicioAlCiudadano = false,
                     Reportes =
                     {
@@ -325,9 +325,9 @@ namespace Api.Data
                     Nombre = "Gran Malecón del Río",
                     Tipo = "Espacio público",
                     Zona = "Norte",
-                    Direccion = "Vía 40, sector Puerta de Oro",
-                    Latitud = 11.0185,
-                    Longitud = -74.8010,
+                    Direccion = "Avenida del Río",
+                    Latitud = 11.0262312,
+                    Longitud = -74.7995889,
                     EsServicioAlCiudadano = false,
                     Reportes =
                     {
@@ -344,9 +344,9 @@ namespace Api.Data
                     Nombre = "Estadio Metropolitano Roberto Meléndez",
                     Tipo = "Escenario deportivo",
                     Zona = "Sur",
-                    Direccion = "Avenida Circunvalar con Calle 45",
-                    Latitud = 10.9258,
-                    Longitud = -74.8008,
+                    Direccion = "Calle 46 # 1 Sur-45, barrio Metropolitana",
+                    Latitud = 10.9269606,
+                    Longitud = -74.8005364,
                     EsServicioAlCiudadano = false,
                     Reportes =
                     {
@@ -370,8 +370,8 @@ namespace Api.Data
                     Tipo = "Universidad pública",
                     Zona = "Norte",
                     Direccion = "Kilómetro 7 antigua vía a Puerto Colombia",
-                    Latitud = 11.0198,
-                    Longitud = -74.8722,
+                    Latitud = 11.0191881,
+                    Longitud = -74.8731999,
                     EsServicioAlCiudadano = true,
                     Reportes =
                     {
