@@ -32,7 +32,7 @@ En desarrollo. Ver `PLANES/README.md` para el avance de cada frente de trabajo.
 | Frente | Estado |
 |---|---|
 | PLAN-00 — Fundación: modelos, `AppDbContext`, migración, Swagger | Completado |
-| PLAN-01 — Datos y contratos: DTOs, seed, CRUD de `Lugar`, búsqueda | Listo para empezar |
+| PLAN-01 — Datos y contratos: DTOs, seed, CRUD de `Lugar`, búsqueda | Completado |
 | PLAN-02 — Análisis con IA: servicio de Gemini y endpoint `analizar` | Listo para empezar |
 | PLAN-03 — Catálogo y consultas: `TipoBarrera` y estadísticas | Listo para empezar |
 | PLAN-04 — Documentación y QA | Bloqueado por 01, 02 y 03 |
@@ -84,7 +84,9 @@ dotnet ef database update --project Api # crea ruta-accesible.db y aplica las mi
 dotnet run --project Api
 ```
 
-Swagger queda en `/swagger`.
+Swagger queda en `/swagger`. Al arrancar, la base se puebla sola con el catálogo de tipos de
+barrera de la NTC 6047, once lugares reales de Barranquilla y sus reportes: no hay que cargar
+datos a mano para probar los endpoints.
 
 `dotnet tool restore` no es opcional: `dotnet ef` se distribuye como herramienta local fijada en
 `dotnet-tools.json` para que los cinco integrantes generen migraciones con la misma versión.
