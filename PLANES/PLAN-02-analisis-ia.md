@@ -121,11 +121,22 @@ para documentar y PLAN-05 para explicarlos en la presentación.
 
 ## Definición de terminado
 
-- [ ] `dotnet build` con 0 errores.
-- [ ] El CRUD completo de reportes (GET, GET/{id}, POST, PUT, DELETE) responde con los
+- [x] `dotnet build` con 0 errores.
+- [x] El CRUD completo de reportes (GET, GET/{id}, POST, PUT, DELETE) responde con los
       códigos correctos.
-- [ ] `POST /api/reportes/{id}/analizar` devuelve un análisis coherente con un reporte del seed.
-- [ ] Con clave inválida, el endpoint responde el mensaje de servicio no disponible y la API
+- [x] `POST /api/reportes/{id}/analizar` devuelve un análisis coherente con un reporte del seed.
+- [x] Con clave inválida, el endpoint responde el mensaje de servicio no disponible y la API
       sigue funcionando.
-- [ ] `git log -p` no contiene la clave en ningún commit.
-- [ ] PR mergeado con el prompt y un ejemplo de respuesta documentados.
+- [x] `git log -p` no contiene la clave en ningún commit.
+- [x] PR mergeado con el prompt y un ejemplo de respuesta documentados.
+
+**Para PLAN-04:** el prompt final está en la descripción del PR #3, pero el ejemplo de
+respuesta que aparece ahí es el de degradación por 429 y ya no corresponde a lo que devuelve
+la API. El ejemplo bueno, con `reporteId` y `advertencia`, está en el comentario del commit
+`f18694b`. Documentar contra ese.
+
+**Pendiente de acuerdo entre PLAN-02 y PLAN-04:** `AnalisisDto` expone `codigoCriterio`,
+`nombreCriterio`, `analisisIa` y `certezaIa`, mientras que la sección 5 de
+`../docs/especificacion.md` los llama `codigoNorma`, `criterioNorma`, `justificacion` y
+`certeza`. Hay que mover el código o el documento antes de que el README documente una forma
+distinta a la que responde la API.
