@@ -5,6 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Persistencia: AppDbContext con SQLite. Ver Api/Configuracion/README.md.
 builder.Services.AgregarPersistencia(builder.Configuration);
 
+// Servicios de IA: HttpClient nombrado para Gemini y ServicioIa. Ver PLAN-02.
+builder.Services.AgregarServiciosIa(builder.Configuration);
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
