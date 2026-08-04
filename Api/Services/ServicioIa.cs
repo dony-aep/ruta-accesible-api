@@ -33,7 +33,7 @@ public class ServicioIa
         try
         {
             var cliente = _httpClientFactory.CreateClient("Gemini");
-            var modelo = _configuracion["Ia:Modelo"] ?? "gemini-2.0-flash";
+            var modelo = _configuracion["Ia:Modelo"] ?? "gemini-3.6-flash";
 
             var cuerpo = new
             {

@@ -21,6 +21,10 @@ public static class ServiciosIa
 
             cliente.BaseAddress = new Uri(urlBase);
 
+            // Timeout corto: si el proveedor se cuelga, es preferible degradar rápido
+            // a dejar la petición esperando los 100 segundos que trae por defecto.
+            cliente.Timeout = TimeSpan.FromSeconds(30);
+
             var apiKey = configuracion["Ia:ApiKey"] ?? string.Empty;
             cliente.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
         });

@@ -12,6 +12,12 @@ namespace Api.Controllers;
 [Route("api/[controller]")]
 public class ReportesController : ControllerBase
 {
+    // La clasificación del modelo se presenta como sugerencia, nunca como dictamen
+    // normativo: una salida mal clasificada podría orientar una decisión pública errada.
+    private const string AdvertenciaIa =
+        "Clasificación sugerida por un modelo de lenguaje. No constituye dictamen normativo " +
+        "y requiere verificación técnica.";
+
     private readonly AppDbContext _contexto;
     private readonly ServicioIa _servicioIa;
 
@@ -95,8 +101,10 @@ public class ReportesController : ControllerBase
         if (reporte == null)
             return NotFound(new { mensaje = $"Reporte con ID {id} no encontrado" });
 
-        // Validar que el estado proporcionado es un valor del enum
-        if (!Enum.TryParse<EstadoReporte>(dto.Estado, ignoreCase: true, out var nuevoEstado))
+        // Validar que el estado proporcionado es un valor del enum. TryParse por sí solo
+        // acepta cualquier número, así que IsDefined descarta los que no son estados reales.
+        if (!Enum.TryParse<EstadoReporte>(dto.Estado, ignoreCase: true, out var nuevoEstado)
+            || !Enum.IsDefined(nuevoEstado))
             return BadRequest(new { mensaje = $"Estado no valido. Los estados permitidos son: Registrado, Analizado, Verificado, Atendido" });
 
         // Validar que no se retrocede ni se salta etapas
@@ -153,76 +161,72 @@ public class ReportesController : ControllerBase
 
         var respuestaIa = await _servicioIa.AnalizarAsync(prompt);
 
-        // Si el servicio falla, devolver respuesta de degradación sin guardar en la base
+        // Si el servicio falla, degradar sin guardar nada: el reporte del ciudadano
+        // no se pierde y puede analizarse más tarde.
         if (respuestaIa == null)
-        {
-            return Ok(new AnalisisDto
-            {
-                CodigoCriterio = "Servicio de IA no disponible",
-                NombreCriterio = "Servicio de IA no disponible",
-                Severidad = "Servicio de IA no disponible",
-                AnalisisIa = "Servicio de IA no disponible",
-                AjusteRazonable = "Servicio de IA no disponible",
-                CertezaIa = 0.0
-            });
-        }
+            return SinAnalisis(reporte.Id, "Servicio de IA no disponible");
+
+        AnalisisDto? analisis;
 
         try
         {
             // Deserializar la respuesta JSON del modelo
             var opciones = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-            var analisis = JsonSerializer.Deserialize<AnalisisDto>(respuestaIa, opciones);
-
-            if (analisis == null)
-            {
-                return Ok(new AnalisisDto
-                {
-                    CodigoCriterio = "Servicio de IA no disponible",
-                    NombreCriterio = "Servicio de IA no disponible",
-                    Severidad = "Servicio de IA no disponible",
-                    AnalisisIa = "Servicio de IA no disponible",
-                    AjusteRazonable = "Servicio de IA no disponible",
-                    CertezaIa = 0.0
-                });
-            }
-
-            // Buscar el tipo de barrera por código para asignarlo al reporte
-            var tipoBarrera = tiposBarrera
-                .FirstOrDefault(t => t.Codigo.Equals(analisis.CodigoCriterio, StringComparison.OrdinalIgnoreCase));
-
-            // Guardar los resultados del análisis en el reporte
-            if (tipoBarrera != null)
-            {
-                reporte.TipoBarreraId = tipoBarrera.Id;
-                reporte.TipoBarrera = tipoBarrera;
-                analisis.NombreCriterio = tipoBarrera.Nombre;
-            }
-
-            if (Enum.TryParse<NivelSeveridad>(analisis.Severidad, ignoreCase: true, out var severidad))
-                reporte.Severidad = severidad;
-
-            reporte.AnalisisIa = analisis.AnalisisIa;
-            reporte.AjusteRazonable = analisis.AjusteRazonable;
-            reporte.CertezaIa = analisis.CertezaIa;
-            reporte.Estado = EstadoReporte.Analizado;
-
-            await _contexto.SaveChangesAsync();
-
-            return Ok(analisis);
+            analisis = JsonSerializer.Deserialize<AnalisisDto>(respuestaIa, opciones);
         }
         catch (JsonException)
         {
-            return Ok(new AnalisisDto
-            {
-                CodigoCriterio = "Servicio de IA no disponible",
-                NombreCriterio = "Servicio de IA no disponible",
-                Severidad = "Servicio de IA no disponible",
-                AnalisisIa = "Servicio de IA no disponible",
-                AjusteRazonable = "Servicio de IA no disponible",
-                CertezaIa = 0.0
-            });
+            return SinAnalisis(reporte.Id, "El servicio de IA respondió en un formato inesperado");
         }
+
+        if (analisis == null)
+            return SinAnalisis(reporte.Id, "El servicio de IA respondió en un formato inesperado");
+
+        // Buscar el tipo de barrera por código. Si el modelo devolvió un criterio que no
+        // está en el catálogo de la NTC 6047, se lo inventó: no se guarda nada y se avisa.
+        // Es la mitigación del riesgo de alucinación normativa que exige el PLAN-02.
+        var tipoBarrera = tiposBarrera
+            .FirstOrDefault(t => t.Codigo.Equals(analisis.CodigoCriterio, StringComparison.OrdinalIgnoreCase));
+
+        if (tipoBarrera == null)
+            return SinAnalisis(reporte.Id, "El servicio de IA propuso un criterio que no existe en la NTC 6047");
+
+        // Guardar los resultados del análisis en el reporte
+        reporte.TipoBarreraId = tipoBarrera.Id;
+        reporte.TipoBarrera = tipoBarrera;
+        analisis.NombreCriterio = tipoBarrera.Nombre;
+
+        if (Enum.TryParse<NivelSeveridad>(analisis.Severidad, ignoreCase: true, out var severidad))
+            reporte.Severidad = severidad;
+
+        reporte.AnalisisIa = analisis.AnalisisIa;
+        reporte.AjusteRazonable = analisis.AjusteRazonable;
+        reporte.CertezaIa = analisis.CertezaIa;
+
+        // Solo avanza desde Registrado. Reanalizar un reporte ya verificado o atendido
+        // no puede retroceder su estado: es la misma regla que aplica el PUT.
+        if (reporte.Estado == EstadoReporte.Registrado)
+            reporte.Estado = EstadoReporte.Analizado;
+
+        await _contexto.SaveChangesAsync();
+
+        analisis.ReporteId = reporte.Id;
+        analisis.Advertencia = AdvertenciaIa;
+
+        return Ok(analisis);
     }
+
+    /// <summary>
+    /// Respuesta cuando no hubo clasificación válida: el servicio no respondió, devolvió
+    /// un formato inesperado o propuso un criterio fuera de la norma. Responde 200 porque
+    /// el reporte sigue registrado; solo el análisis queda pendiente.
+    /// </summary>
+    private ObjectResult SinAnalisis(int reporteId, string analisis) => Ok(new
+    {
+        reporteId,
+        analisis,
+        mensaje = "El reporte quedó registrado y puede analizarse más tarde."
+    });
 
     /// <summary>
     /// Construye el prompt para el modelo de lenguaje con la taxonomía cerrada
