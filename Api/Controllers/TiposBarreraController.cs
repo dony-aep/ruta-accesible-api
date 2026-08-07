@@ -59,6 +59,19 @@ namespace Api.Controllers
         [HttpPost]
         public async Task<ActionResult<TipoBarreraDto>> PostTipoBarrera(TipoBarreraCrearDto dto)
         {
+            // El código tiene índice único en AppDbContext: sin esta comprobación previa
+            // el duplicado revienta en SaveChangesAsync y sale como 500.
+            var codigoEnUso = await _context.TiposBarrera
+                .AnyAsync(t => t.Codigo == dto.Codigo);
+
+            if (codigoEnUso)
+            {
+                return BadRequest(new
+                {
+                    mensaje = $"Ya existe un tipo de barrera con el código {dto.Codigo}."
+                });
+            }
+
             var tipo = new TipoBarrera
             {
                 Codigo = dto.Codigo,
@@ -89,6 +102,19 @@ namespace Api.Controllers
             if (tipo == null)
             {
                 return NotFound();
+            }
+
+            // Mismo índice único que en el POST, excluyendo el propio registro para que
+            // se pueda editar el nombre o el criterio sin cambiar el código.
+            var codigoEnUso = await _context.TiposBarrera
+                .AnyAsync(t => t.Codigo == dto.Codigo && t.Id != id);
+
+            if (codigoEnUso)
+            {
+                return BadRequest(new
+                {
+                    mensaje = $"Ya existe otro tipo de barrera con el código {dto.Codigo}."
+                });
             }
 
             tipo.Nombre = dto.Nombre;
