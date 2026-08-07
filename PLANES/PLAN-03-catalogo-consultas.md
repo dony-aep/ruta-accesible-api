@@ -71,8 +71,21 @@ No tocar `Api/Models/`, `AppDbContext.cs`, `Program.cs` ni los archivos de PLAN-
 
 ## Definición de terminado
 
-- [ ] `dotnet build` con 0 errores.
-- [ ] Los cinco endpoints de `TipoBarrera` responden correctamente.
-- [ ] Borrar un tipo en uso devuelve 400 y no rompe la base de datos.
-- [ ] El endpoint de estadísticas devuelve conteos que coinciden con el seed.
-- [ ] PR mergeado y estado actualizado en `PLANES/README.md`.
+- [x] `dotnet build` con 0 errores.
+- [x] Los cinco endpoints de `TipoBarrera` responden correctamente.
+- [x] Borrar un tipo en uso devuelve 400 y no rompe la base de datos.
+- [x] El endpoint de estadísticas devuelve conteos que coinciden con el seed.
+- [x] PR mergeado y estado actualizado en `PLANES/README.md`.
+
+PR #4, mergeado el 6 de agosto de 2026. Las cinco casillas se verificaron con la API
+corriendo, no por lectura del código.
+
+Dos correcciones sobre la revisión, aplicadas por el TL sobre la rama por la cercanía de
+la presentación:
+
+- El endpoint de estadísticas devolvía un grupo con `tipoBarrera: null` por zona, porque
+  `TipoBarreraId` es nulo hasta que la IA clasifica el reporte. Con el seed actual eran 12
+  de 17 reportes. Ahora se agrupan bajo `"Sin clasificar"`.
+- Un `codigo` repetido devolvía 500: hay índice único en `AppDbContext` y el duplicado
+  reventaba en `SaveChangesAsync`. Ahora se comprueba antes de guardar y devuelve 400, como
+  pide `../docs/especificacion.md`.
