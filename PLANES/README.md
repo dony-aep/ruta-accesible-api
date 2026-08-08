@@ -79,8 +79,8 @@ no queden dos personas en el mismo plan ni planes sin dueño, y actualiza esta t
 | [PLAN-01](PLAN-01-datos-contratos.md) — Datos y contratos | BD / DTOs (1) | DTOs, validaciones, seed de Barranquilla, CRUD de `Lugar`, endpoint de búsqueda | `plan-01-datos` | @Zamith101 | **Completado — mergeado en `main`** |
 | [PLAN-02](PLAN-02-analisis-ia.md) — Análisis con IA | API / IA | Servicio de Gemini, CRUD de `ReporteAccesibilidad`, endpoint `analizar`, manejo del fallo | `plan-02-ia` | @dilansara-jpg | **Completado — mergeado en `main`** |
 | [PLAN-03](PLAN-03-catalogo-consultas.md) — Catálogo y consultas | BD / DTOs (2) | CRUD de `TipoBarrera`, borrado protegido, estadísticas por zona | `plan-03-catalogo` | @gabyd20 | **Completado — mergeado en `main`** |
-| [PLAN-04](PLAN-04-documentacion-qa.md) — Documentación y QA | Docs / QA | README, tabla de endpoints, capturas, batería de pruebas, anotaciones de Swagger | `plan-04-docs` | @Edwin252002 | **Listo para empezar** |
-| [PLAN-05](PLAN-05-cierre-presentacion.md) — Cierre | Todos | Slides, guion, video demo, ensayos, checklist final | `plan-05-cierre` | Los 5 | Bloqueado por PLAN-04 |
+| [PLAN-04](PLAN-04-documentacion-qa.md) — Documentación y QA | Docs / QA | README, tabla de endpoints, capturas, batería de pruebas, anotaciones de Swagger | `plan-04-docs` | @Edwin252002 | **Completado — mergeado en `main`** |
+| [PLAN-05](PLAN-05-cierre-presentacion.md) — Cierre | Todos | Slides, guion, video demo, ensayos, checklist final | `plan-05-cierre` | Los 5 | **Listo para empezar** |
 
 Reparto de controladores, uno por persona. **Es la regla que sostiene todo el reparto:**
 

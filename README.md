@@ -34,7 +34,7 @@ En desarrollo. Ver `PLANES/README.md` para el avance de cada frente de trabajo.
 | PLAN-02 — Análisis con IA: servicio de Gemini y endpoint `analizar` | Completado |
 | PLAN-03 — Catálogo y consultas: `TipoBarrera` y estadísticas | Completado |
 | PLAN-04 — Documentación y QA | Completado |
-| PLAN-05 — Cierre y presentación | Bloqueado por PLAN-04 |
+| PLAN-05 — Cierre y presentación | Listo para empezar |
 
 ## Stack
 
