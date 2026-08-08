@@ -11,9 +11,9 @@
 
 ## Precondiciones
 
-- [ ] La API corre con `dotnet run` sobre `main` recién clonado.
-- [ ] Todos los endpoints previstos existen y responden.
-- [ ] El seed puebla la base de datos automáticamente.
+- [x] La API corre con `dotnet run` sobre `main` recién clonado.
+- [x] Todos los endpoints previstos existen y responden.
+- [x] El seed puebla la base de datos automáticamente.
 
 ## Archivos que este plan posee
 
@@ -67,10 +67,10 @@ comentarios XML) en los controladores, coordinando con su dueño antes de tocarl
 
 ## Definición de terminado
 
-- [ ] Un clon limpio levanta la API siguiendo solo el README.
-- [ ] La tabla de endpoints cubre todos los endpoints existentes.
-- [ ] Hay ejemplos JSON de solicitud y respuesta reales.
-- [ ] `screenshots/` contiene las seis capturas mínimas y están enlazadas.
-- [ ] `docs/pruebas.md` documenta caso válido e inválido por endpoint.
-- [ ] Swagger muestra los códigos de respuesta documentados.
-- [ ] PR mergeado y estado actualizado en `PLANES/README.md`.
+- [x] Un clon limpio levanta la API siguiendo solo el README.
+- [x] La tabla de endpoints cubre todos los endpoints existentes.
+- [x] Hay ejemplos JSON de solicitud y respuesta reales.
+- [x] `screenshots/` contiene las seis capturas mínimas y están enlazadas.
+- [x] `docs/pruebas.md` documenta caso válido e inválido por endpoint.
+- [x] Swagger muestra los códigos de respuesta documentados.
+- [x] PR mergeado y estado actualizado en `PLANES/README.md`.

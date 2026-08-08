@@ -33,9 +33,9 @@ En desarrollo. Ver `PLANES/README.md` para el avance de cada frente de trabajo.
 |---|---|
 | PLAN-00 — Fundación: modelos, `AppDbContext`, migración, Swagger | Completado |
 | PLAN-01 — Datos y contratos: DTOs, seed, CRUD de `Lugar`, búsqueda | Completado |
-| PLAN-02 — Análisis con IA: servicio de Gemini y endpoint `analizar` | Listo para empezar |
-| PLAN-03 — Catálogo y consultas: `TipoBarrera` y estadísticas | Listo para empezar |
-| PLAN-04 — Documentación y QA | Bloqueado por 01, 02 y 03 |
+| PLAN-02 — Análisis con IA: servicio de Gemini y endpoint `analizar` | Completado |
+| PLAN-03 — Catálogo y consultas: `TipoBarrera` y estadísticas | Completado |
+| PLAN-04 — Documentación y QA | En proceso |
 | PLAN-05 — Cierre y presentación | Bloqueado por PLAN-04 |
 
 ## Stack
