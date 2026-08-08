@@ -2,10 +2,11 @@
 
 > **Tema confirmado por votación unánime del equipo: 5 de 5.** Idea presentada y taller de
 > definición entregado el 30 de julio de 2026.
-> **PLAN-00, PLAN-01, PLAN-02 y PLAN-03 están mergeados en `main`.** La API está completa:
-> los tres CRUD, el endpoint de búsqueda, el análisis con IA, las estadísticas por zona y el
-> seed poblado. Le toca a PLAN-04 (@Edwin252002), que ya puede arrancar, y después PLAN-05
-> entre los cinco. **Los seis planes ya tienen dueño.**
+> **PLAN-00, PLAN-01, PLAN-02, PLAN-03 y PLAN-04 están mergeados en `main`.** La API está
+> completa y documentada: los tres CRUD, el endpoint de búsqueda, el análisis con IA, las
+> estadísticas por zona, el seed poblado, la batería de pruebas de QA y la documentación del
+> proyecto. PLAN-04 (@Edwin252002) ha sido completado. Le toca a PLAN-05 entre los cinco
+> integrantes para la fase de cierre y presentación.
 
 **Diseño acordado (problema, modelo de datos, los 18 endpoints, integración con IA):**
 `../docs/especificacion.md`. Es la fuente de verdad del contrato de cada controlador.

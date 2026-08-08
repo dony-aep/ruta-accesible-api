@@ -30,7 +30,9 @@ public class ReportesController : ControllerBase
     /// <summary>
     /// Obtiene todos los reportes de accesibilidad.
     /// </summary>
+    /// <response code="200">Lista de reportes obtenida correctamente.</response>
     [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<ReporteDetalleDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<ReporteDetalleDto>>> ObtenerTodos()
     {
         var reportes = await _contexto.Reportes
@@ -45,7 +47,11 @@ public class ReportesController : ControllerBase
     /// <summary>
     /// Obtiene un reporte por su identificador.
     /// </summary>
+    /// <response code="200">Reporte encontrado.</response>
+    /// <response code="404">No existe un reporte con ese identificador.</response>
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(ReporteDetalleDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ReporteDetalleDto>> ObtenerPorId(int id)
     {
         var reporte = await _contexto.Reportes
@@ -62,7 +68,11 @@ public class ReportesController : ControllerBase
     /// <summary>
     /// Crea un nuevo reporte de accesibilidad.
     /// </summary>
+    /// <response code="201">Reporte creado. Queda en estado Registrado.</response>
+    /// <response code="400">Datos inválidos o el lugar indicado no existe.</response>
     [HttpPost]
+    [ProducesResponseType(typeof(ReporteDetalleDto), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<ReporteDetalleDto>> Crear([FromBody] CrearReporteDto dto)
     {
         // Verificar que el lugar existe
@@ -93,7 +103,13 @@ public class ReportesController : ControllerBase
     /// (Registrado -> Analizado -> Verificado -> Atendido), nunca retroceder.
     /// No permite modificar los campos que asigna la IA.
     /// </summary>
+    /// <response code="204">Estado actualizado.</response>
+    /// <response code="400">Estado no válido, retroceso de estado o salto de etapas.</response>
+    /// <response code="404">No existe un reporte con ese identificador.</response>
     [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Editar(int id, [FromBody] EditarReporteDto dto)
     {
         var reporte = await _contexto.Reportes.FindAsync(id);
@@ -123,7 +139,11 @@ public class ReportesController : ControllerBase
     /// <summary>
     /// Elimina un reporte de accesibilidad.
     /// </summary>
+    /// <response code="204">Reporte eliminado.</response>
+    /// <response code="404">No existe un reporte con ese identificador.</response>
     [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Eliminar(int id)
     {
         var reporte = await _contexto.Reportes.FindAsync(id);
@@ -143,7 +163,15 @@ public class ReportesController : ControllerBase
     /// taxonomía cerrada de la NTC 6047 y devuelve la clasificación.
     /// Si el servicio de IA falla, responde con un mensaje de servicio no disponible.
     /// </summary>
+    /// <response code="200">
+    /// Clasificación obtenida. Si el servicio de IA no respondió, devolvió un formato
+    /// inesperado o propuso un criterio fuera de la norma, responde igualmente 200 con
+    /// el motivo: el reporte queda registrado y puede analizarse más tarde.
+    /// </response>
+    /// <response code="404">No existe un reporte con ese identificador.</response>
     [HttpPost("{id}/analizar")]
+    [ProducesResponseType(typeof(AnalisisDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<AnalisisDto>> Analizar(int id)
     {
         var reporte = await _contexto.Reportes

@@ -17,7 +17,12 @@ public class LugaresController : ControllerBase
         _contexto = contexto;
     }
 
+    /// <summary>
+    /// Obtiene todos los lugares con sus reportes de accesibilidad.
+    /// </summary>
+    /// <response code="200">Lista de lugares obtenida correctamente.</response>
     [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<LugarDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<LugarDto>>> ObtenerTodos()
     {
         var lugares = await _contexto.Lugares
@@ -29,7 +34,14 @@ public class LugaresController : ControllerBase
         return Ok(lugares);
     }
 
+    /// <summary>
+    /// Obtiene un lugar por su identificador.
+    /// </summary>
+    /// <response code="200">Lugar encontrado.</response>
+    /// <response code="404">No existe un lugar con ese identificador.</response>
     [HttpGet("{id}")]
+    [ProducesResponseType(typeof(LugarDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<LugarDto>> ObtenerPorId(int id)
     {
         var lugar = await _contexto.Lugares
@@ -43,7 +55,17 @@ public class LugaresController : ControllerBase
         return Ok(MapearALugarDto(lugar));
     }
 
+    /// <summary>
+    /// Filtra lugares por tipo, zona, si prestan servicio al ciudadano y si están
+    /// libres de barreras críticas. Los cuatro filtros son opcionales y se combinan.
+    /// </summary>
+    /// <param name="tipo">Tipo de lugar, por ejemplo Parque o Hospital.</param>
+    /// <param name="zona">Zona de Barranquilla donde está el lugar.</param>
+    /// <param name="soloServicioCiudadano">Solo lugares que prestan servicio al ciudadano.</param>
+    /// <param name="sinBarrerasCriticas">Solo lugares sin reportes de severidad Alta.</param>
+    /// <response code="200">Lista de lugares que cumplen los filtros.</response>
     [HttpGet("buscar")]
+    [ProducesResponseType(typeof(IEnumerable<LugarDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<LugarDto>>> Buscar(
         [FromQuery] string? tipo,
         [FromQuery] string? zona,
@@ -74,7 +96,14 @@ public class LugaresController : ControllerBase
         return Ok(resultados);
     }
 
+    /// <summary>
+    /// Registra un nuevo lugar.
+    /// </summary>
+    /// <response code="201">Lugar creado. Devuelve el recurso y su ubicación.</response>
+    /// <response code="400">Los datos enviados no cumplen las validaciones.</response>
     [HttpPost]
+    [ProducesResponseType(typeof(LugarDto), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<LugarDto>> Crear([FromBody] LugarCrearDto dto)
     {
         var nuevoLugar = new Lugar
@@ -95,7 +124,16 @@ public class LugaresController : ControllerBase
         return CreatedAtAction(nameof(ObtenerPorId), new { id = nuevoLugar.Id }, resultadoDto);
     }
 
+    /// <summary>
+    /// Actualiza los datos de un lugar existente.
+    /// </summary>
+    /// <response code="204">Lugar actualizado.</response>
+    /// <response code="400">Los datos enviados no cumplen las validaciones.</response>
+    /// <response code="404">No existe un lugar con ese identificador.</response>
     [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Actualizar(int id, [FromBody] LugarActualizarDto dto)
     {
         var lugar = await _contexto.Lugares.FindAsync(id);
@@ -116,7 +154,14 @@ public class LugaresController : ControllerBase
         return NoContent();
     }
 
+    /// <summary>
+    /// Elimina un lugar y, en cascada, sus reportes asociados.
+    /// </summary>
+    /// <response code="204">Lugar eliminado.</response>
+    /// <response code="404">No existe un lugar con ese identificador.</response>
     [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Eliminar(int id)
     {
         var lugar = await _contexto.Lugares.FindAsync(id);
