@@ -5,6 +5,10 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>166c3876-2661-4fa8-b79e-8abda4b9eb42</UserSecretsId>
+    <!-- Genera el XML que Swagger lee para mostrar las descripciones de cada endpoint.
+         1591 se silencia para no exigir comentarios en DTOs y modelos. -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

@@ -16,7 +16,13 @@ public class EstadisticasController : ControllerBase
         _contexto = contexto;
     }
 
+    /// <summary>
+    /// Cuenta los reportes agrupados por zona y tipo de barrera. Los reportes que
+    /// todavía no se han analizado aparecen bajo la etiqueta Sin clasificar.
+    /// </summary>
+    /// <response code="200">Conteo por zona y tipo de barrera.</response>
     [HttpGet("barreras-por-zona")]
+    [ProducesResponseType(typeof(IEnumerable<EstadisticasDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<EstadisticasDto>>> ObtenerBarrerasPorZona()
     {
         // TipoBarreraId es nulo hasta que el endpoint de análisis clasifica el reporte,

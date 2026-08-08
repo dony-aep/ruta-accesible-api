@@ -1,4 +1,4 @@
-##Planes de trabajo — Ruta Accesible
+# Planes de trabajo — Ruta Accesible
 
 > **Tema confirmado por votación unánime del equipo: 5 de 5.** Idea presentada y taller de
 > definición entregado el 30 de julio de 2026.
